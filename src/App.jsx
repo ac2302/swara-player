@@ -21,7 +21,7 @@ import "@ionic/react/css/display.css";
 /* Theme variables */
 import "./theme/variables.css";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MantineProvider, Tabs } from "@mantine/core";
 import { PlayerPlay, Music, Settings } from "tabler-icons-react";
 
@@ -34,6 +34,9 @@ setupIonicReact();
 
 const App = () => {
 	const [activeTab, setActiveTab] = useState(1);
+	const [appSettings, setAppSettings] = useState({
+		notations: "hindi",
+	});
 
 	return (
 		<MantineProvider
@@ -54,7 +57,10 @@ const App = () => {
 				</Tabs.Tab>
 				<Tabs.Tab label="Settings" icon={<Settings size={17} />}>
 					<TabContainer>
-						<SettingsTab />
+						<SettingsTab
+							appSettings={appSettings}
+							setAppSettings={setAppSettings}
+						/>
 					</TabContainer>
 				</Tabs.Tab>
 			</Tabs>
