@@ -37,6 +37,9 @@ const App = () => {
 	const [appSettings, setAppSettings] = useState({
 		notations: "hindi",
 	});
+	const [bpm, setBpm] = useState(120);
+	const [scale, setScale] = useState("E4");
+	const [notes, setNotes] = useState([]);
 
 	return (
 		<MantineProvider
@@ -52,7 +55,15 @@ const App = () => {
 				</Tabs.Tab>
 				<Tabs.Tab label="Compose" icon={<Music size={17} />}>
 					<TabContainer>
-						<ComposeTab />
+						<ComposeTab
+							appSettings={appSettings}
+							bpm={bpm}
+							setBpm={setBpm}
+							scale={scale}
+							setScale={setScale}
+							notes={notes}
+							setNotes={setNotes}
+						/>
 					</TabContainer>
 				</Tabs.Tab>
 				<Tabs.Tab label="Settings" icon={<Settings size={17} />}>

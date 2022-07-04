@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, ScrollArea } from "@mantine/core";
+import { Container, ScrollArea, Space } from "@mantine/core";
 
 function TabContainer({ children }) {
 	return (
@@ -9,6 +9,7 @@ function TabContainer({ children }) {
 				scrollbarSize={12}
 			>
 				{children}
+				<Space h="md" />
 			</ScrollArea>
 		</Container>
 	);

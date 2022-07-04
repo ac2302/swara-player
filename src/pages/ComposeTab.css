@@ -1,0 +1,83 @@
+@font-face {
+	font-family: ome_bhatkhande_hindi;
+	src: url(../../public/assets/Fonts/OmeBhatkhandeHindi.ttf);
+}
+
+@font-face {
+	font-family: ome_swarlipi;
+	src: url(../../public/assets/Fonts/OmeSwarlipi.ttf);
+}
+
+@font-face {
+	font-family: ome_bhatkhande_english;
+	src: url(../../public/assets/Fonts/OmeBhatkhandeEnglish.ttf);
+}
+
+@font-face {
+	font-family: ome_bhatkhande_punjabi;
+	src: url(../../public/assets/Fonts/OmeBhatkhandePunjabi.ttf);
+}
+
+.swara-hindi {
+	font-family: "ome_bhatkhande_hindi";
+}
+
+.swara-swarlipi {
+	font-family: "ome_swarlipi";
+}
+
+.swara-english {
+	font-family: "ome_bhatkhande_english";
+}
+
+.swara-punjabi {
+	font-family: "ome_bhatkhande_punjabi";
+}
+
+/* .mantine-Select-item {
+	font-family: "ome_bhatkhande_hindi";
+}
+.mantine-Select-input {
+	font-family: "ome_bhatkhande_hindi";
+} */
+
+.note-display {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.note-display button {
+	margin-left: auto;
+	margin-right: 0;
+}
+
+.button-container button {
+	display: inline-block;
+	margin-left: 10px;
+}
+
+.note-info-container {
+	/* border: 1px solid white; */
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	padding-inline: 10px;
+}
+.note-info-container .time {
+	/* border: 1px solid red; */
+	min-width: 60px;
+	text-align: right;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+.note-info-container .note {
+	/* border: 1px solid red; */
+	font-size: 25px;
+}
+.note-info-container .length {
+	/* border: 1px solid red; */
+	min-width: 60px;
+	margin-top: auto;
+	margin-bottom: auto;
+}
