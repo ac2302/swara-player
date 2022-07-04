@@ -50,7 +50,12 @@ const App = () => {
 			<Tabs active={activeTab} onTabChange={setActiveTab}>
 				<Tabs.Tab label="Play" icon={<PlayerPlay size={17} />}>
 					<TabContainer>
-						<PlayTab />
+						<PlayTab
+							appSettings={appSettings}
+							bpm={bpm}
+							scale={scale}
+							notes={notes}
+						/>
 					</TabContainer>
 				</Tabs.Tab>
 				<Tabs.Tab label="Compose" icon={<Music size={17} />}>
