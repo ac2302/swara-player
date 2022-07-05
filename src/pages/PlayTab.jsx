@@ -185,12 +185,12 @@ function PlayTab({
 					console.log(schedule);
 					console.log({
 						envelope: {
-							attack: attack,
+							attack: attack * noteLength,
 							attackCurve: attackCurve,
-							decay: decay,
+							decay: decay * noteLength,
 							decayCurve: decayCurve,
 							sustain: sustain,
-							release: release,
+							release: release * noteLength,
 							releaseCurve: releaseCurve,
 						},
 					});

@@ -97,6 +97,8 @@ const curves = [
 	"step",
 ];
 
+const decayCurves = ["linear", "exponential"];
+
 const ComposeTab = ({
 	appSettings,
 	swarInputTextbox,
@@ -224,7 +226,7 @@ const ComposeTab = ({
 							id="decay-curve-input"
 							value={decayCurve}
 							onChange={setDecayCurve}
-							data={curves.map((curve) => ({
+							data={decayCurves.map((curve) => ({
 								label: curve,
 								value: curve,
 							}))}
