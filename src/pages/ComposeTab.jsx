@@ -1,12 +1,4 @@
 import {
-	IonContent,
-	IonHeader,
-	IonPage,
-	IonTitle,
-	IonToolbar,
-} from "@ionic/react";
-import {
-	Container,
 	InputWrapper,
 	NumberInput,
 	ScrollArea,
@@ -22,7 +14,7 @@ import {
 	Input,
 } from "@mantine/core";
 import { useEffect, useState } from "react";
-import { Edit, Plus, Trash, Clock } from "tabler-icons-react";
+import { Edit, Plus, Trash } from "tabler-icons-react";
 import "./ComposeTab.css";
 
 const swaras = [

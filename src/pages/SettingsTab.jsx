@@ -1,11 +1,10 @@
-import { InputWrapper, Select, Title } from "@mantine/core";
+import { InputWrapper, Select } from "@mantine/core";
 import React, { useEffect, useState } from "react";
 
 const notationsList = ["hindi", "english", "punjabi", "swarlipi"];
 
 function SettingsTab({ appSettings, setAppSettings }) {
 	const [notations, setNotations] = useState(appSettings.notations);
-	
 
 	useEffect(() => {
 		setAppSettings({ notations });

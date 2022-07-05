@@ -1,11 +1,3 @@
-import React from "react";
-import {
-	IonContent,
-	IonHeader,
-	IonPage,
-	IonTitle,
-	IonToolbar,
-} from "@ionic/react";
 import * as Tone from "tone";
 import { Button } from "@mantine/core";
 
