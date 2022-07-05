@@ -87,18 +87,43 @@ const scales = [
 	"F#5",
 ];
 
+const curves = [
+	"linear",
+	"exponential",
+	"sine",
+	"cosine",
+	"bounce",
+	"ripple",
+	"step",
+];
+
 const ComposeTab = ({
 	appSettings,
+	swarInputTextbox,
+	setSwarInputTextbox,
 	bpm,
 	setBpm,
 	scale,
 	setScale,
 	notes,
 	setNotes,
+	attack,
+	setAttack,
+	attackCurve,
+	setAttackCurve,
+	decay,
+	setDecay,
+	decayCurve,
+	setDecayCurve,
+	sustain,
+	setSustain,
+	release,
+	setRelease,
+	releaseCurve,
+	setReleaseCurve,
 }) => {
 	const [isAdvancedOptionsModalVisible, setIsAdvancedOptionsModalVisible] =
 		useState(false);
-	const [swarInputTextbox, setSwarInputTextbox] = useState(false);
 
 	useEffect(() => {
 		console.log(notes);
@@ -112,7 +137,7 @@ const ComposeTab = ({
 				onClose={() => {
 					setIsAdvancedOptionsModalVisible(false);
 				}}
-				title="Edit Note"
+				title="Advanced Options"
 				overlayBlur={3}
 				transition="scale"
 				transitionDuration={600}
@@ -132,6 +157,131 @@ const ComposeTab = ({
 						}
 					/>
 				</InputWrapper>
+				<Space h="lg" />
+				<Title order={4}>Amplitude Envelope</Title>
+				<Space h="sm" />
+
+				{/* attack */}
+				<InputWrapper id="attack-input" label="Attack" size="md">
+					<NumberInput
+						id="attack-input"
+						value={attack}
+						onChange={setAttack}
+						min={0}
+						precision={2}
+						step={0.05}
+						size="md"
+					/>
+				</InputWrapper>
+				<Space h="sm" />
+				<InputWrapper
+					id="attack-curve-input"
+					label="Attack Curve"
+					size="md"
+				>
+					<ScrollArea
+						offsetScrollbars
+						scrollbarSize={0}
+						style={{ width: "calc(100vw - 80px)" }}
+					>
+						<SegmentedControl
+							id="attack-curve-input"
+							value={attackCurve}
+							onChange={setAttackCurve}
+							data={curves.map((curve) => ({
+								label: curve,
+								value: curve,
+							}))}
+						/>
+					</ScrollArea>
+				</InputWrapper>
+				<Space h="sm" />
+
+				{/* decay */}
+				<InputWrapper id="decay-input" label="Decay" size="md">
+					<NumberInput
+						id="decay-input"
+						value={decay}
+						onChange={setDecay}
+						min={0}
+						precision={2}
+						step={0.05}
+						size="md"
+					/>
+				</InputWrapper>
+				<Space h="sm" />
+				<InputWrapper
+					id="decay-curve-input"
+					label="Decay Curve"
+					size="md"
+				>
+					<ScrollArea
+						offsetScrollbars
+						scrollbarSize={0}
+						style={{ width: "calc(100vw - 80px)" }}
+					>
+						<SegmentedControl
+							id="decay-curve-input"
+							value={decayCurve}
+							onChange={setDecayCurve}
+							data={curves.map((curve) => ({
+								label: curve,
+								value: curve,
+							}))}
+						/>
+					</ScrollArea>
+				</InputWrapper>
+				<Space h="sm" />
+
+				{/* sustain */}
+				<InputWrapper id="sustain-input" label="Sustain" size="md">
+					<NumberInput
+						id="sustain-input"
+						value={sustain}
+						onChange={setSustain}
+						min={0}
+						precision={2}
+						step={0.05}
+						size="md"
+					/>
+				</InputWrapper>
+				<Space h="sm" />
+
+				{/* release */}
+				<InputWrapper id="release-input" label="Release" size="md">
+					<NumberInput
+						id="release-input"
+						value={release}
+						onChange={setRelease}
+						min={0}
+						precision={2}
+						step={0.05}
+						size="md"
+					/>
+				</InputWrapper>
+				<Space h="sm" />
+				<InputWrapper
+					id="release-curve-input"
+					label="Release Curve"
+					size="md"
+				>
+					<ScrollArea
+						offsetScrollbars
+						scrollbarSize={0}
+						style={{ width: "calc(100vw - 80px)" }}
+					>
+						<SegmentedControl
+							id="release-curve-input"
+							value={releaseCurve}
+							onChange={setReleaseCurve}
+							data={curves.map((curve) => ({
+								label: curve,
+								value: curve,
+							}))}
+						/>
+					</ScrollArea>
+				</InputWrapper>
+				<Space h="sm" />
 			</Modal>
 			<InputWrapper id="bpm-input" label="BPM" size="md">
 				<NumberInput id="bpm-input" value={bpm} onChange={setBpm} />

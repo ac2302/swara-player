@@ -37,9 +37,20 @@ const App = () => {
 	const [appSettings, setAppSettings] = useState({
 		notations: "hindi",
 	});
+
+	const [swarInputTextbox, setSwarInputTextbox] = useState(false);
+
 	const [bpm, setBpm] = useState(120);
 	const [scale, setScale] = useState("E4");
 	const [notes, setNotes] = useState([]);
+
+	const [attack, setAttack] = useState(0.2);
+	const [attackCurve, setAttackCurve] = useState("exponential");
+	const [decay, setDecay] = useState(0.1);
+	const [decayCurve, setDecayCurve] = useState("exponential");
+	const [sustain, setSustain] = useState(1);
+	const [release, setRelease] = useState(0.2);
+	const [releaseCurve, setReleaseCurve] = useState("exponential");
 
 	return (
 		<MantineProvider
@@ -55,6 +66,13 @@ const App = () => {
 							bpm={bpm}
 							scale={scale}
 							notes={notes}
+							attack={attack}
+							attackCurve={attackCurve}
+							decay={decay}
+							decayCurve={decayCurve}
+							sustain={sustain}
+							release={release}
+							releaseCurve={releaseCurve}
 						/>
 					</TabContainer>
 				</Tabs.Tab>
@@ -62,12 +80,28 @@ const App = () => {
 					<TabContainer>
 						<ComposeTab
 							appSettings={appSettings}
+							swarInputTextbox={swarInputTextbox}
+							setSwarInputTextbox={setSwarInputTextbox}
 							bpm={bpm}
 							setBpm={setBpm}
 							scale={scale}
 							setScale={setScale}
 							notes={notes}
 							setNotes={setNotes}
+							attack={attack}
+							setAttack={setAttack}
+							attackCurve={attackCurve}
+							setAttackCurve={setAttackCurve}
+							decay={decay}
+							setDecay={setDecay}
+							decayCurve={decayCurve}
+							setDecayCurve={setDecayCurve}
+							sustain={sustain}
+							setSustain={setSustain}
+							release={release}
+							setRelease={setRelease}
+							releaseCurve={releaseCurve}
+							setReleaseCurve={setReleaseCurve}
 						/>
 					</TabContainer>
 				</Tabs.Tab>

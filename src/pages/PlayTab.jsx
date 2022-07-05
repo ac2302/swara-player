@@ -147,7 +147,19 @@ const offset = {
 	nu: 23,
 };
 
-function PlayTab({ appSettings, bpm, scale, notes }) {
+function PlayTab({
+	appSettings,
+	bpm,
+	scale,
+	notes,
+	attack,
+	attackCurve,
+	decay,
+	decayCurve,
+	sustain,
+	release,
+	releaseCurve,
+}) {
 	return (
 		<>
 			<Button
@@ -171,17 +183,28 @@ function PlayTab({ appSettings, bpm, scale, notes }) {
 					});
 
 					console.log(schedule);
+					console.log({
+						envelope: {
+							attack: attack,
+							attackCurve: attackCurve,
+							decay: decay,
+							decayCurve: decayCurve,
+							sustain: sustain,
+							release: release,
+							releaseCurve: releaseCurve,
+						},
+					});
 
 					const synth = new Tone.Synth({
-						envelope: new Tone.Envelope({
-							attack: 0.2,
-							attackCurve: "exponential",
-							decay: 1,
-							decayCurve: "exponential",
-							sustain: 1,
-							release: 0.2,
-							releaseCurve: "exponential",
-						}),
+						envelope: {
+							attack: attack,
+							attackCurve: attackCurve,
+							decay: decay,
+							decayCurve: decayCurve,
+							sustain: sustain,
+							release: release,
+							releaseCurve: releaseCurve,
+						},
 					}).toDestination();
 					const now = Tone.now();
 
