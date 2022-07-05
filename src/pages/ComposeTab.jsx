@@ -156,7 +156,7 @@ const ComposeTab = ({
 
 function Note({ value, duration, id, setNotes, notes, appSettings }) {
 	const [opened, setOpened] = useState(false);
-	const [selectedValue, setSelectedValue] = useState(value ? value : "-");
+	const [selectedValue, setSelectedValue] = useState(value ? value : "s");
 	const [selectedDuration, setSelectedDuration] = useState(1);
 	const [time, setTime] = useState(0);
 
@@ -203,6 +203,9 @@ function Note({ value, duration, id, setNotes, notes, appSettings }) {
 					}}
 					title="Edit Note"
 					overlayBlur={3}
+					transition="scale"
+					transitionDuration={600}
+					transitionTimingFunction="ease"
 				>
 					<InputWrapper
 						id={`swar-input-${id}`}
