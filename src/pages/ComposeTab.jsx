@@ -18,6 +18,8 @@ import {
 	ActionIcon,
 	Center,
 	SegmentedControl,
+	Checkbox,
+	Input,
 } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { Edit, Plus, Trash, Clock } from "tabler-icons-react";
@@ -94,12 +96,43 @@ const ComposeTab = ({
 	notes,
 	setNotes,
 }) => {
+	const [isAdvancedOptionsModalVisible, setIsAdvancedOptionsModalVisible] =
+		useState(false);
+	const [swarInputTextbox, setSwarInputTextbox] = useState(false);
+
 	useEffect(() => {
 		console.log(notes);
 	}, [bpm, scale, notes]);
 
 	return (
 		<>
+			<Modal
+				opened={isAdvancedOptionsModalVisible}
+				// centered
+				onClose={() => {
+					setIsAdvancedOptionsModalVisible(false);
+				}}
+				title="Edit Note"
+				overlayBlur={3}
+				transition="scale"
+				transitionDuration={600}
+				transitionTimingFunction="ease"
+			>
+				<InputWrapper
+					id="input-method-toggle"
+					description="type swara using ome bhatkande"
+					size="md"
+				>
+					<Checkbox
+						id="input-method-toggle"
+						label="Ome Bhatkande Input"
+						checked={swarInputTextbox}
+						onChange={(event) =>
+							setSwarInputTextbox(event.currentTarget.checked)
+						}
+					/>
+				</InputWrapper>
+			</Modal>
 			<InputWrapper id="bpm-input" label="BPM" size="md">
 				<NumberInput id="bpm-input" value={bpm} onChange={setBpm} />
 			</InputWrapper>
@@ -124,6 +157,12 @@ const ComposeTab = ({
 
 			<Space h="md" />
 
+			<Button onClick={() => setIsAdvancedOptionsModalVisible(true)}>
+				Advanced Options
+			</Button>
+
+			<Space h="md" />
+
 			<Title order={3}>Notes</Title>
 
 			<Space h="sm" />
@@ -137,6 +176,7 @@ const ComposeTab = ({
 					appSettings={appSettings}
 					setNotes={setNotes}
 					notes={notes}
+					swarInputTextbox={swarInputTextbox}
 					key={i}
 				/>
 			))}
@@ -154,7 +194,15 @@ const ComposeTab = ({
 	);
 };
 
-function Note({ value, duration, id, setNotes, notes, appSettings }) {
+function Note({
+	value,
+	duration,
+	id,
+	setNotes,
+	notes,
+	appSettings,
+	swarInputTextbox,
+}) {
 	const [opened, setOpened] = useState(false);
 	const [selectedValue, setSelectedValue] = useState(value ? value : "s");
 	const [selectedDuration, setSelectedDuration] = useState(
@@ -187,6 +235,9 @@ function Note({ value, duration, id, setNotes, notes, appSettings }) {
 			.mantine-Select-input {
 				font-family: "ome_bhatkhande_${appSettings.notations}";
 			}
+			.mantine-Input-input {
+				font-family: "ome_bhatkhande_${appSettings.notations}";
+			}
 		`;
 		const stylesContainer = document.getElementById("style-container");
 		stylesContainer.innerHTML = "";
@@ -214,14 +265,28 @@ function Note({ value, duration, id, setNotes, notes, appSettings }) {
 						label="Swara"
 						size="md"
 					>
-						<Select
-							id={`swar-input-${id}`}
-							value={selectedValue}
-							onChange={setSelectedValue}
-							data={swaras}
-							searchable
-							size="md"
-						/>
+						{swarInputTextbox ? (
+							<Input
+								id={`swar-input-${id}`}
+								value={selectedValue}
+								autoFocus
+								onChange={(e) => {
+									if (swaras.includes(e.target.value))
+										setSelectedValue(e.target.value);
+								}}
+								size="md"
+							/>
+						) : (
+							<Select
+								id={`swar-input-${id}`}
+								value={selectedValue}
+								onChange={setSelectedValue}
+								data={swaras}
+								searchable
+								autoFocus
+								size="md"
+							/>
+						)}
 					</InputWrapper>
 					<Space h="md" />
 					<InputWrapper
