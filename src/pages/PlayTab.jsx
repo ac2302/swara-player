@@ -177,6 +177,7 @@ function PlayTab({ appSettings, bpm, scale, notes }) {
 							attack: 0.2,
 							attackCurve: "exponential",
 							decay: 1,
+							decayCurve: "exponential",
 							sustain: 1,
 							release: 0.2,
 							releaseCurve: "exponential",
