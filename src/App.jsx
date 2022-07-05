@@ -21,12 +21,13 @@ import "./theme/variables.css";
 
 import { useEffect, useState } from "react";
 import { MantineProvider, Tabs } from "@mantine/core";
-import { PlayerPlay, Music, Settings } from "tabler-icons-react";
+import { PlayerPlay, Music, Settings, DeviceFloppy } from "tabler-icons-react";
 
 import ComposeTab from "./pages/ComposeTab";
 import PlayTab from "./pages/PlayTab";
 import TabContainer from "./components/TabContainer";
 import SettingsTab from "./pages/SettingsTab";
+import SaveTab from "./pages/SaveTab";
 
 setupIonicReact();
 
@@ -57,7 +58,7 @@ const App = () => {
 			withNormalizeCSS
 		>
 			<Tabs active={activeTab} onTabChange={setActiveTab}>
-				<Tabs.Tab label="Play" icon={<PlayerPlay size={17} />}>
+				<Tabs.Tab icon={<PlayerPlay size={20} />}>
 					<TabContainer>
 						<PlayTab
 							appSettings={appSettings}
@@ -74,7 +75,7 @@ const App = () => {
 						/>
 					</TabContainer>
 				</Tabs.Tab>
-				<Tabs.Tab label="Compose" icon={<Music size={17} />}>
+				<Tabs.Tab icon={<Music size={20} />}>
 					<TabContainer>
 						<ComposeTab
 							appSettings={appSettings}
@@ -103,7 +104,15 @@ const App = () => {
 						/>
 					</TabContainer>
 				</Tabs.Tab>
-				<Tabs.Tab label="Settings" icon={<Settings size={17} />}>
+				<Tabs.Tab icon={<DeviceFloppy size={20} />}>
+					<TabContainer>
+						<SaveTab
+							appSettings={appSettings}
+							setAppSettings={setAppSettings}
+						/>
+					</TabContainer>
+				</Tabs.Tab>
+				<Tabs.Tab icon={<Settings size={20} />}>
 					<TabContainer>
 						<SettingsTab
 							appSettings={appSettings}
