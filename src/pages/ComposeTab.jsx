@@ -157,7 +157,9 @@ const ComposeTab = ({
 function Note({ value, duration, id, setNotes, notes, appSettings }) {
 	const [opened, setOpened] = useState(false);
 	const [selectedValue, setSelectedValue] = useState(value ? value : "s");
-	const [selectedDuration, setSelectedDuration] = useState(1);
+	const [selectedDuration, setSelectedDuration] = useState(
+		duration ? duration : 1
+	);
 	const [time, setTime] = useState(0);
 
 	useEffect(() => {
